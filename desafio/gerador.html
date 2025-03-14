@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerador</title>
+</head>
+<body>
+  <h2>Tabela Gerada</h2>
+  <table border="1" id="tabela"></table>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const linhas = parseInt(params.get("linhas"));
+    const colunas = parseInt(params.get("colunas"));
+
+    const tabela = document.getElementById("tabela");
+    for (let i = 0; i < linhas; i++) {
+      const row = tabela.insertRow();
+      for (let j = 0; j < colunas; j++) {
+        const cell = row.insertCell();
+        cell.textContent = "*";
+      }
+    }
+  </script>
+</body>
+</html>

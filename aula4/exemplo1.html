@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>Exemplo CSS 1</title>
+    <link rel="stylesheet" href="styles/base.css    ">
+    <link rel="stylesheet" href="styles/table.css">
+    <link rel="stylesheet" href="styles/button.css">
+</head>
+
+<body>
+    <h1>Lero lero</h1>
+    <hr>
+
+    <h2>UI</h2>
+    <p>Desde ontem a noite a disposição dos elementos HTML otimizou a renderização de estados estáticos nos componentes
+        da UI.</p>
+
+    <h2>Coisas</h2>
+    <p>
+        Fala pro cliente que a otimização de performance da renderização do DOM deletou todas as entradas no fechamento
+        automático das tags.
+        Explica pro Product Onwer que a normalização da data causou a race condition na interpolação dinâmica de
+        strings.
+    </p>
+
+
+    <div>
+        <button onclick="cotacao()">Clique aqui para ver as cotações das moedas atualizado.</button>
+    </div>
+
+    <div id="cotacoes" class="hidden-div">
+        <h1>Cotações moedas</h1>
+        <table>
+            <thead>
+                <th>Moeda</th>
+                <th>Valor (R$)</th>
+            </thead>
+
+            <tbody id="cotacoes-data"></tbody>
+        </table>
+    </div>
+
+
+    <script>
+        function cotacao() {
+            const moedas = ["USD", "EUR", "GBP", "JPY", "AUD", "BTC"]
+            const lista = document.getElementById("cotacoes-data")
+            apagarFilhos(lista)
+
+            fetch(`https://economia.awesomeapi.com.br/json/last/${moedas.join(',')}-BRL`)
+                .then(response => response.json())
+                .then(data => {
+                    moedas.forEach(moeda => {
+                        const key = `${moeda}BRL`
+                        if (data[key]) {
+                            const row = document.createElement("tr")
+                            const moedaData = document.createElement("td")
+                            const valorData = document.createElement("td")
+                            moedaData.textContent = moeda
+                            valorData.textContent = `R$ ${parseFloat(data[key].ask).toFixed(2)}`
+                            valorData.setAttribute('onclick', 'copyToClipboard(this)')
+                            row.appendChild(moedaData)
+                            row.appendChild(valorData)
+                            lista.appendChild(row)
+                        }
+                    })
+                })
+                .catch(error => console.error("Erro ao buscar cotações:", error))
+            document.getElementById("cotacoes").setAttribute('class', null)
+        }
+
+        function copyToClipboard(element) {
+            var text = element.innerText || element.textContent
+            navigator.clipboard.writeText(text).then(() => {
+                console.log(`Valor copiado ${text}`)
+            }).catch(err => {
+                console.error(`Não foi possível copiar, motivo: ${err}`)
+            })
+        }
+
+        function apagarFilhos(element) {
+            while (element.lastElementChild) {
+                element.removeChild(element.lastElementChild)
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

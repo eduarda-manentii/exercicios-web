@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Recebe Formulário</title>
+</head>
+<body>
+    <h1>Recebeu o nome: <span id="nomeRecebido"> </span></h1>
+    <h1>Recebeu a idade: <span id="idadeRecebida"> </span></h1>
+    <script>    
+        const params = new URLSearchParams(window.location.search);
+        exibeCampo("nomeRecebido","nome");
+        exibeCampo("idadeRecebida", "idade");
+
+        function findElementBy(typeItem, item) {
+            document.getElementById(typeItem).textContent = decodeURIComponent(item);
+        }
+
+        function exibeCampo(typeItem, item) {
+            if(params.get(item)) {
+                findElementBy(typeItem, item);
+            } else {
+                document.getElementById(typeItem).textContent = "Nenhum dado recebido";
+            }
+        }
+
+    </script>
+    
+</body>
+</html>
