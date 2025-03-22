@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Assoletra</title>
+</head>
+<body>
+    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div style="width: 30rem;" class="card rounded text-center">
+            <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                <img class="img" style="width: 10rem;" src="images/intro.png" alt="Logo Assoletra">
+                <br><br>
+                <form class="w-100">
+                    <div class="form-group row justify-content-center">
+                        <div class="col-xs-2 text-center">
+                            <label class="font-family-monospace" id="mainLetterLabel">Letra principal</label>
+                            <input 
+                                class="form-control" 
+                                id="mainLetter" 
+                                type="text" maxlength="1" 
+                                required="true" 
+                                oninput="validateInput(this)"
+                                onkeydown="capturaTeclaNumero1(event)">
+                        </div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <div class="col-xs-2 text-center">
+                            <label id="allowedLetter">Letras variáveis</label>
+                            <div class="row">
+                                <div class="col-sm-1">
+                                    <input 
+                                        class="form-control mb-2" 
+                                        id="allowedLetter1" 
+                                        type="text" 
+                                        maxlength="1" 
+                                        required="true" 
+                                        oninput="validateInput(this)"
+                                        onkeydown="capturaTeclaNumero2(event)">
+                                </div>
+                                <div class="col-sm-1">
+                                    <input 
+                                        class="form-control mb-2" 
+                                        id="allowedLetter2" 
+                                        type="text" 
+                                        maxlength="1" 
+                                        required="true" 
+                                        oninput="validateInput(this)"
+                                        onkeydown="capturaTeclaNumero3(event)">
+                                </div>
+                                <div class="col-sm-1">
+                                    <input 
+                                        class="form-control mb-2" 
+                                        id="allowedLetter3" 
+                                        type="text" 
+                                        maxlength="1" 
+                                        required="true" 
+                                        oninput="validateInput(this)"
+                                        onkeydown="capturaTeclaNumero4(event)">
+                                </div>
+                                <div class="col-sm-1">
+                                    <input 
+                                        class="form-control mb-2" 
+                                        id="allowedLetter4" 
+                                        type="text" 
+                                        maxlength="1" 
+                                        required="true" 
+                                        oninput="validateInput(this)"
+                                        onkeydown="capturaTeclaNumero5(event)">
+                                </div>
+                                <div class="col-sm-1">
+                                    <input 
+                                        class="form-control mb-2" 
+                                        id="allowedLetter5" 
+                                        type="text" 
+                                        maxlength="1" 
+                                        required="true" 
+                                        oninput="validateInput(this)"
+                                        onkeydown="capturaTeclaNumero6(event)">
+                                </div>
+                                <div class="col-sm-1">
+                                    <input 
+                                        class="form-control mb-2" 
+                                        id="allowedLetter6" 
+                                        type="text" 
+                                        maxlength="1" 
+                                        required="true" 
+                                        oninput="validateInput(this)"
+                                        onkeydown="capturaTeclaNumero7(event)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button 
+                        id="searchButton" 
+                        type="button" 
+                        class="btn btn-primary btn-lg btn-block"
+                        data-toggle="button"> Pesquisar 
+                    </button>
+                </form>
+            </div>            
+        </div>
+    </div>    
+    <script src="script.js"></script>
+</body>
+</html>

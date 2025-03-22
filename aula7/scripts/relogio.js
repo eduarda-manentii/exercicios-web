@@ -1,8 +1,8 @@
 function iniciarTimer() {
-    let tempo = parseInt(document.getElementById("tempo").value);
+    let tempo = document.getElementById("tempo").value;
     let segundo = document.getElementById("segundo");
     setInterval(() => {
-        segundo.value = tempo;
+        segundo.textContent = tempo;
         console.log(tempo)
         console.log(segundo)
         tempo -= 1;
