@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <title>Lista de compras</title>
+    <style>
+        .highlight {
+            color: yellow;
+        }
+        .highlight-red {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex justify-content-center" style="height: 100vh;">
+        <div style="width: 90rem;" class="card rounded">
+            <div class="card-body d-flex flex-column">
+                <h2 class="card-title text-center">Lista de Compras</h2>
+                <form>
+                    <div class="form-group">
+                      <label>Orçamento disponível (R$)</label>
+                      <input type="number" class="form-control" id="orcamentoDisponivel" placeholder="Ex: 100" required="true">
+                      <br>
+                      <div class="form-group">
+                        <div class="col-xs-2">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <label>Nome do Produto</label>
+                                    <input 
+                                        type="text" 
+                                        class="form-control mb-2" 
+                                        id="nomeProduto" 
+                                        placeholder="Ex: Arroz" 
+                                        required="true"
+                                        minlength="2">
+                                </div>
+                                <div class="col-sm-3">
+                                    <label>Valor unitário (R$)</label>
+                                    <input 
+                                        type="number" 
+                                        class="form-control mb-2" 
+                                        id="valorUnitario" 
+                                        placeholder="Ex: 5.50" 
+                                        required="true"
+                                        min="0.1">
+                                </div>
+                                <div class="col-sm-3">
+                                    <label>Quantidade</label>
+                                    <input 
+                                        type="number" 
+                                        class="form-control mb-2" 
+                                        id="quantidade" 
+                                        placeholder="Ex: 1"
+                                        min="1"
+                                        required="true">
+                                </div>
+                                <div class="col-sm-3">
+                                    <br>
+                                    <button 
+                                        id="adicionarButton" 
+                                        type="button" 
+                                        class="btn btn-primary btn-lg btn-block"
+                                        data-toggle="button"
+                                        onclick="adicionarItemTabela()"> Adicionar 
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </form>
+                <div>
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">Produto</th>
+                            <th scope="col">Valor Unitário (R$)</th>
+                            <th scope="col">Quantidade</th>
+                            <th scope="col">Total (R$)</th>
+                          </tr>
+                        </thead>
+                        <tbody id="tblListaProduto">
+                        </tbody>
+                      </table>
+                </div>
+                <div>
+                    <h2>Total da compra: <span id="totalCompra">0</span> R$</h2>
+                    <p>Restante do orçamento: <span id="restanteOrcamento">0</span> R$</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
